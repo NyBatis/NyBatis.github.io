@@ -8,6 +8,10 @@
 
   <!-- Define root (configuration) -->
   <xs:element name="configuration">
+    <xs:annotation>
+      <xs:documentation source="version">1.0.0</xs:documentation>
+      <xs:documentation source="description">Root element of the nybatis database configuration file.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="properties"  minOccurs="0" maxOccurs="1" />
