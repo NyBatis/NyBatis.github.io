@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nybatis.github.io/schema configuration" elementFormDefault="qualified">
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://nybatis.github.io/schema/configuration/1.0.0"
+  elementFormDefault="qualified"
+  targetNamespace="http://nybatis.github.io/schema/configuration/1.0.0"
+>
 
   <!-- Define root (configuration) -->
   <xs:element name="configuration">
