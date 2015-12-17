@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nybatis-mapper.xsd">
+<mapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.mapper:1.0" xsi:schemaLocation="urn:nybatis.mapper:1.0 http://nybatis.github.io/schema/nybatis-mapper.xsd">
+<!--<mapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.mapper:1.0" xsi:schemaLocation="urn:nybatis.mapper:1.0 nybatis-mapper.xsd">-->
 
 <sql id="select" fetch="50" cache="notRegistered" flush="60" >
   SELECT  *
@@ -31,7 +32,7 @@
     </case>
     <ref id="sss"></ref>
     <group>
-      <if test="aa"></if>
+      <if test="aa &lt; 1"></if>
     </group>
   </sql>
 

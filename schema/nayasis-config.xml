@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nybatis-config.xsd">
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.configuration:1.0" xsi:schemaLocation="urn:nybatis.configuration:1.0 http://nybatis.github.io/schema/nybatis-config.xsd">
+<!--<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.configuration:1.0" xsi:schemaLocation="urn:nybatis.configuration:1.0 nybatis-config.xsd">-->
 
   <properties path="config.properties">
     <property key="username" value="nayasis+#{driver}"/>
@@ -12,13 +13,11 @@
   <cache id="sample01" class="nayasis.common.cache.staticCache" />
 
   <environment id="sample01" default="true">
-    <datasourceJdbc>
+    <datasourceJdbc timeout="25" autocommit="false">
       <driver>#{driver}</driver>
       <url>#{url}</url>
       <username>#{username}</username>
       <password>#{password}</password>
-      <timeout>25</timeout>
-      <autocommit>false</autocommit>
     </datasourceJdbc>
     <sqlPath>
       <path>test01/sample.xml</path>
@@ -56,6 +55,5 @@
       <path>test03</path>
     </sqlPath>
   </environment>
-
 
 </configuration>
