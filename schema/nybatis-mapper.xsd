@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:nybatis.mapper:1.0"
+           targetNamespace="urn:nybatis.mapper:1.0"
+           elementFormDefault="qualified"
+>
 
   <!-- Define root (mapper) -->
 
