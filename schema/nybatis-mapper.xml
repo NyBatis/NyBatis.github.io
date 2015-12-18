@@ -2,21 +2,22 @@
 <mapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.mapper:1.0" xsi:schemaLocation="urn:nybatis.mapper:1.0 http://nybatis.github.io/schema/nybatis-mapper.xsd">
 <!--<mapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.mapper:1.0" xsi:schemaLocation="urn:nybatis.mapper:1.0 nybatis-mapper.xsd">-->
 
-<sql id="select" fetch="50" cache="notRegistered" flush="60" >
-  SELECT  *
-  FROM    PROD
-  WHERE   list_id  = #{listId}
-  <!-- AND     rownum  <= #{rowNum} -->
-  ORDER BY ${orderKey}
-  LIMIT 0, #{rowNum:int}
-</sql>
+  <sql id="select" fetch="50" cache="notRegistered" flush="60" >
+    SELECT  *
+    FROM    PROD
+    WHERE   list_id  = #{listId}
+    <!-- AND     rownum  <= #{rowNum} -->
+    ORDER BY ${orderKey}
+  </sql>
 
-  <sql id="select1" >
+  <sql id="select01" >
     SELECT * FROM TABLE
     <key id="11">aa
     </key>
+    <key id="11">aa
+    </key>
     <ref id="22"/>
-    <if test="111">
+    <if test="aaaa">
     </if>
     <if test="s"></if>
     <elseif test="aa"></elseif>
@@ -25,7 +26,7 @@
 
     </if>
 
-    <foreach key="dd"></foreach>
+    <foreach key=""></foreach>
     <case>
       <when test="aa"></when>
       <else/>

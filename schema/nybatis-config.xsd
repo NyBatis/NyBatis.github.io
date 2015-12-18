@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns="urn:nybatis.configuration:1.0"
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:nc="urn:nybatis.configuration:1.0"
   targetNamespace="urn:nybatis.configuration:1.0"
   elementFormDefault="qualified"
 >
@@ -8,22 +9,22 @@
   <!-- Define root (configuration) -->
   <xs:element name="configuration">
     <xs:annotation>
-      <xs:documentation source="version">1.0.0</xs:documentation>
+      <xs:documentation source="version">1.0</xs:documentation>
       <xs:documentation source="description">Root element of the nybatis database configuration file.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="properties"  minOccurs="0" maxOccurs="1" />
-        <xs:element ref="cache"       minOccurs="0" maxOccurs="unbounded" />
-        <xs:element ref="environment" minOccurs="1" maxOccurs="unbounded" />
+        <xs:element ref="nc:properties"  minOccurs="0" maxOccurs="1" />
+        <xs:element ref="nc:cache"       minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="nc:environment" minOccurs="1" maxOccurs="unbounded" />
       </xs:sequence>
     </xs:complexType>
     <xs:unique name="uniqueCacheId" >
-      <xs:selector xpath="cache" />
+      <xs:selector xpath="nc:cache" />
       <xs:field xpath="@id" />
     </xs:unique>
     <xs:unique name="uniqueEnvironmentId" >
-      <xs:selector xpath="environment" />
+      <xs:selector xpath="nc:environment" />
       <xs:field xpath="@id" />
     </xs:unique>
   </xs:element>
@@ -32,19 +33,19 @@
   <xs:element name="properties">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="property" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="nc:property" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="path" type="notEmpty" />
+      <xs:attribute name="path" type="nc:notEmpty" />
     </xs:complexType>
     <xs:unique name="uniquePropertyKey" >
-      <xs:selector xpath="property" />
+      <xs:selector xpath="nc:property" />
       <xs:field    xpath="@key" />
     </xs:unique>
   </xs:element>
 
   <xs:element name="property">
     <xs:complexType>
-      <xs:attribute name="key"   type="notEmpty" use="required" />
+      <xs:attribute name="key"   type="nc:notEmpty" use="required" />
       <xs:attribute name="value" type="xs:string" />
     </xs:complexType>
   </xs:element>
@@ -53,8 +54,8 @@
   <!-- Define cache -->
   <xs:element name="cache">
     <xs:complexType>
-      <xs:attribute name="id"    type="notEmpty" use="required"/>
-      <xs:attribute name="class" type="notEmpty" use="required"/>
+      <xs:attribute name="id"    type="nc:notEmpty" use="required"/>
+      <xs:attribute name="class" type="nc:notEmpty" use="required"/>
       <xs:attribute name="size"  type="xs:positiveInteger" />
       <xs:attribute name="flush" type="xs:positiveInteger" />
     </xs:complexType>
@@ -64,13 +65,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:choice minOccurs="1" maxOccurs="1">
-          <xs:element ref="datasourceJdbc"         />
-          <xs:element ref="datasourceJdbcUnpooled" />
-          <xs:element ref="datasourceJndi"         />
+          <xs:element ref="nc:datasourceJdbc"         />
+          <xs:element ref="nc:datasourceJdbcUnpooled" />
+          <xs:element ref="nc:datasourceJndi"         />
         </xs:choice>
-        <xs:element ref="sqlPath"   minOccurs="0" maxOccurs="1" />
+        <xs:element ref="nc:sqlPath"   minOccurs="0" maxOccurs="1" />
       </xs:sequence>
-      <xs:attribute name="id"      type="notEmpty" use="required"/>
+      <xs:attribute name="id"      type="nc:notEmpty" use="required"/>
       <xs:attribute name="default" type="xs:boolean" />
     </xs:complexType>
   </xs:element>
@@ -79,10 +80,10 @@
   <xs:element name="datasourceJdbc">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="driver"     type="notEmpty"           minOccurs="1" maxOccurs="1" />
-        <xs:element name="url"        type="notEmpty"           minOccurs="1" maxOccurs="1" />
-        <xs:element name="username"   type="notEmpty"           minOccurs="0" maxOccurs="1" />
-        <xs:element name="password"   type="notEmpty"           minOccurs="0" maxOccurs="1" />
+        <xs:element name="driver"     type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
+        <xs:element name="url"        type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
+        <xs:element name="username"   type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
+        <xs:element name="password"   type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
       <xs:attribute name="poolMin"    type="xs:positiveInteger" />
       <xs:attribute name="poolMax"    type="xs:positiveInteger" />
@@ -97,10 +98,10 @@
   <xs:element name="datasourceJdbcUnpooled">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="driver"         type="notEmpty"           minOccurs="1" maxOccurs="1" />
-        <xs:element name="url"            type="notEmpty"           minOccurs="1" maxOccurs="1" />
-        <xs:element name="username"       type="notEmpty"           minOccurs="0" maxOccurs="1" />
-        <xs:element name="password"       type="notEmpty"           minOccurs="0" maxOccurs="1" />
+        <xs:element name="driver"     type="nc:notEmpty"  minOccurs="1" maxOccurs="1" />
+        <xs:element name="url"        type="nc:notEmpty"  minOccurs="1" maxOccurs="1" />
+        <xs:element name="username"   type="nc:notEmpty"  minOccurs="0" maxOccurs="1" />
+        <xs:element name="password"   type="nc:notEmpty"  minOccurs="0" maxOccurs="1" />
       </xs:sequence>
       <xs:attribute name="timeout"    type="xs:positiveInteger" />
       <xs:attribute name="autocommit" type="xs:boolean"         />
@@ -110,35 +111,32 @@
   <xs:element name="datasourceJndi">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="name" type="notEmpty" minOccurs="1" maxOccurs="1" />
+        <xs:element name="name" type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
         <xs:choice>
           <xs:sequence>
-            <xs:element name="initialContext" type="notEmpty" minOccurs="1" maxOccurs="1" />
-            <xs:element name="providerUrl"    type="notEmpty" minOccurs="1" maxOccurs="1" />
+            <xs:element name="initialContext" type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
+            <xs:element name="providerUrl"    type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
           </xs:sequence>
-          <xs:sequence></xs:sequence>
         </xs:choice>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
 
-
   <!-- Define sqlPath -->
-  <xs:element name="sqlPath" type="pathType">
+  <xs:element name="sqlPath" type="nc:pathType">
     <xs:unique name="uniquePath">
-      <xs:selector xpath="path" />
+      <xs:selector xpath="nc:path" />
       <xs:field    xpath="."    />
     </xs:unique>
   </xs:element>
 
   <xs:complexType name="pathType">
     <xs:sequence>
-      <xs:element name="path" type="notEmpty" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="path" type="nc:notEmpty" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
   <!-- Validation -->
-
   <xs:simpleType name="notEmpty">
     <xs:restriction base="xs:string">
       <xs:minLength value="1"/>
