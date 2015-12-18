@@ -26,7 +26,6 @@
 
     </if>
 
-    <foreach key=""></foreach>
     <case>
       <when test="aa"></when>
       <else/>
