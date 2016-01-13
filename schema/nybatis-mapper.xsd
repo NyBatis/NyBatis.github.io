@@ -134,6 +134,7 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group   ref="nm:ifElse"   />
         <xs:element ref="nm:case"     />
+        <xs:element ref="nm:foreach"  />
         <xs:element ref="nm:group"    />
         <xs:element ref="nm:ref"      />
       </xs:choice>
