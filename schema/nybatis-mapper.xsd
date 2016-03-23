@@ -40,7 +40,6 @@
       <xs:attribute name="lobPrefetch" type="xs:positiveInteger" />
       <xs:attribute name="cache"       type="nm:notEmpty" />
       <xs:attribute name="flush"       type="xs:positiveInteger" />
-      <xs:attribute name="autocommit" type="xs:boolean" />
     </xs:complexType>
   </xs:element>
 
