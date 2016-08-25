@@ -80,10 +80,11 @@
   <xs:element name="datasourceJdbc">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="driver"     type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
-        <xs:element name="url"        type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
-        <xs:element name="username"   type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
-        <xs:element name="password"   type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
+        <xs:element name="driver"            type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
+        <xs:element name="url"               type="nc:notEmpty" minOccurs="1" maxOccurs="1" />
+        <xs:element name="username"          type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
+        <xs:element name="password"          type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
+        <xs:element name="passwordSecretKey" type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
       <xs:attribute name="poolMin"    type="xs:positiveInteger" />
       <xs:attribute name="poolMax"    type="xs:positiveInteger" />
@@ -91,6 +92,7 @@
       <xs:attribute name="ping"       type="xs:boolean"         />
       <xs:attribute name="pingCycle"  type="xs:positiveInteger" />
       <xs:attribute name="timeout"    type="xs:positiveInteger" />
+      <!--<xs:attribute name="timeout"    type="nc:containsVariable" />-->
       <xs:attribute name="autocommit" type="xs:boolean"         />
     </xs:complexType>
   </xs:element>
@@ -141,6 +143,16 @@
     <xs:restriction base="xs:string">
       <xs:minLength value="1"/>
     </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="containsVariable">
+    <xs:annotation>
+      <xs:documentation>it must be positive integer or contains variable like "#{.+}"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value=".*#\{.+\}.*" />
+    </xs:restriction>
+    <xs:restriction base="xs:positiveInteger"></xs:restriction>
   </xs:simpleType>
 
 </xs:schema>
