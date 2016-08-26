@@ -87,7 +87,8 @@
         <xs:element name="passwordSecretKey" type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
       <xs:attribute name="poolMin"    type="xs:positiveInteger" />
-      <xs:attribute name="poolMax"    type="xs:positiveInteger" />
+      <!--<xs:attribute name="poolMax"    type="xs:positiveInteger" />-->
+      <xs:attribute name="poolMax"    type="nc:containsVariable" />
       <xs:attribute name="poolStep"   type="xs:positiveInteger" />
       <xs:attribute name="ping"       type="xs:boolean"         />
       <xs:attribute name="pingCycle"  type="xs:positiveInteger" />
