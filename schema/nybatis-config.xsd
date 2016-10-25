@@ -86,14 +86,12 @@
         <xs:element name="password"          type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
         <xs:element name="passwordSecretKey" type="nc:notEmpty" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
-      <xs:attribute name="poolMin"    type="xs:positiveInteger" />
-      <!--<xs:attribute name="poolMax"    type="xs:positiveInteger" />-->
-      <xs:attribute name="poolMax"    type="nc:containsVariable" />
-      <xs:attribute name="poolStep"   type="xs:positiveInteger" />
-      <xs:attribute name="ping"       type="xs:boolean"         />
-      <xs:attribute name="pingCycle"  type="xs:positiveInteger" />
-      <xs:attribute name="timeout"    type="xs:positiveInteger" />
-      <!--<xs:attribute name="timeout"    type="nc:containsVariable" />-->
+      <xs:attribute name="poolMin"    type="nc:typePositiveIntegerOrVariable" />
+      <xs:attribute name="poolMax"    type="nc:typePositiveIntegerOrVariable" />
+      <xs:attribute name="poolStep"   type="nc:typePositiveIntegerOrVariable" />
+      <xs:attribute name="ping"       type="xs:boolean"                       />
+      <xs:attribute name="pingCycle"  type="nc:typePositiveIntegerOrVariable" />
+      <xs:attribute name="timeout"    type="nc:typePositiveIntegerOrVariable" />
       <xs:attribute name="autocommit" type="xs:boolean"         />
     </xs:complexType>
   </xs:element>
@@ -106,7 +104,7 @@
         <xs:element name="username"   type="nc:notEmpty"  minOccurs="0" maxOccurs="1" />
         <xs:element name="password"   type="nc:notEmpty"  minOccurs="0" maxOccurs="1" />
       </xs:sequence>
-      <xs:attribute name="timeout"    type="xs:positiveInteger" />
+      <xs:attribute name="timeout"    type="nc:typePositiveIntegerOrVariable" />
       <xs:attribute name="autocommit" type="xs:boolean"         />
     </xs:complexType>
   </xs:element>
@@ -146,14 +144,22 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="containsVariable">
+  <xs:simpleType name="typePositiveIntegerOrVariable">
     <xs:annotation>
-      <xs:documentation>it must be positive integer or contains variable like "#{.+}"</xs:documentation>
+      <xs:documentation>it must be positive integer or variable like "#{.+}"</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value=".*#\{.+\}.*" />
+      <xs:pattern value="(^#\{.+\}$|[0-9]*)" />
     </xs:restriction>
-    <xs:restriction base="xs:positiveInteger"></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeBooleanOrVariable">
+    <xs:annotation>
+      <xs:documentation>it must be positive integer or variable like "#{.+}"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(^#\{.+\}$|[0-9])*" />
+    </xs:restriction>
   </xs:simpleType>
 
 </xs:schema>
