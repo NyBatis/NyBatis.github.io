@@ -56,4 +56,17 @@
     </sqlPath>
   </environment>
 
+  <environment id="sample04">
+    <datasourceJdbc poolMax="#{poolSpMax}" poolMin="#{poolSpMin}" ping="true" pingCycle="600">
+      <driver>oracle.jdbc.driver.OracleDriver</driver>
+      <url>#{DB_URL}</url>
+      <username>#{PROP_ID}</username>
+      <password>#{PROP_PW}</password>
+      <passwordSecretKey>#{SECRET_KEY}</passwordSecretKey>
+    </datasourceJdbc>
+    <sqlPath>
+      <path>./sp</path>
+    </sqlPath>
+  </environment>
+
 </configuration>

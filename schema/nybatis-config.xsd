@@ -56,8 +56,8 @@
     <xs:complexType>
       <xs:attribute name="id"    type="nc:notEmpty" use="required"/>
       <xs:attribute name="class" type="nc:notEmpty" use="required"/>
-      <xs:attribute name="size"  type="xs:positiveInteger" />
-      <xs:attribute name="flush" type="xs:positiveInteger" />
+      <xs:attribute name="size"  type="nc:typePositiveIntegerOrVariable" />
+      <xs:attribute name="flush" type="nc:typePositiveIntegerOrVariable" />
     </xs:complexType>
   </xs:element>
 
@@ -149,7 +149,7 @@
       <xs:documentation>it must be positive integer or variable like "#{.+}"</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="(^#\{.+\}$|[0-9]*)" />
+      <xs:pattern value="(#\{.+\}|[0-9]+)" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -158,7 +158,7 @@
       <xs:documentation>it must be positive integer or variable like "#{.+}"</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="(^#\{.+\}$|[0-9])*" />
+      <xs:pattern value="(?i)^(#\{.+\}|true|false)$" />
     </xs:restriction>
   </xs:simpleType>
 
