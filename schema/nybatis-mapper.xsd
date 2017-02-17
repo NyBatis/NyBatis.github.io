@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:nm="urn:nybatis.mapper:1.0"
-  targetNamespace="urn:nybatis.mapper:1.0"
+  xmlns:nm="urn:nybatis.mapper:1.1"
+  targetNamespace="urn:nybatis.mapper:1.1"
   elementFormDefault="qualified"
 >
 
@@ -38,8 +38,6 @@
       <xs:attribute name="id"          type="nm:notEmpty" use="required"/>
       <xs:attribute name="fetch"       type="xs:positiveInteger" />
       <xs:attribute name="lobPrefetch" type="xs:positiveInteger" />
-      <xs:attribute name="cache"       type="nm:notEmpty" />
-      <xs:attribute name="flush"       type="xs:positiveInteger" />
     </xs:complexType>
   </xs:element>
 
