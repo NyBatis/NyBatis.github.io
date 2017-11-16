@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:nc="urn:nybatis.configuration:1.1"
-  targetNamespace="urn:nybatis.configuration:1.1"
+  xmlns:nc="urn:nybatis.configuration:1.2"
+  targetNamespace="urn:nybatis.configuration:1.2"
   elementFormDefault="qualified"
 >
 
@@ -70,9 +70,10 @@
           <xs:element ref="nc:datasourceJndi"         />
         </xs:choice>
         <xs:element ref="nc:sqlPath"   minOccurs="0" maxOccurs="1" />
+        <xs:element name="createTable" type="nc:typeBooleanOrVariable" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attribute name="id"      type="nc:notEmpty" use="required"/>
-      <xs:attribute name="default" type="xs:boolean" />
+      <xs:attribute name="default" type="nc:typeBooleanOrVariable" />
     </xs:complexType>
   </xs:element>
 
@@ -89,10 +90,10 @@
       <xs:attribute name="poolMin"    type="nc:typePositiveIntegerOrVariable" />
       <xs:attribute name="poolMax"    type="nc:typePositiveIntegerOrVariable" />
       <xs:attribute name="poolStep"   type="nc:typePositiveIntegerOrVariable" />
-      <xs:attribute name="ping"       type="xs:boolean"                       />
+      <xs:attribute name="ping"       type="nc:typeBooleanOrVariable"         />
       <xs:attribute name="pingCycle"  type="nc:typePositiveIntegerOrVariable" />
       <xs:attribute name="timeout"    type="nc:typePositiveIntegerOrVariable" />
-      <xs:attribute name="autocommit" type="xs:boolean"         />
+      <xs:attribute name="autocommit" type="nc:typeBooleanOrVariable"         />
     </xs:complexType>
   </xs:element>
 
@@ -105,7 +106,7 @@
         <xs:element name="password"   type="nc:notEmpty"  minOccurs="0" maxOccurs="1" />
       </xs:sequence>
       <xs:attribute name="timeout"    type="nc:typePositiveIntegerOrVariable" />
-      <xs:attribute name="autocommit" type="xs:boolean"         />
+      <xs:attribute name="autocommit" type="nc:typeBooleanOrVariable"         />
     </xs:complexType>
   </xs:element>
 
@@ -149,16 +150,16 @@
       <xs:documentation>it must be positive integer or variable like "#{.+}"</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="(#\{.+\}|[0-9]+)" />
+      <xs:pattern value="(#\{[^ \t]+\}|[0-9]+)" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="typeBooleanOrVariable">
     <xs:annotation>
-      <xs:documentation>it must be positive integer or variable like "#{.+}"</xs:documentation>
+      <xs:documentation>it must be true, false or variable like "#{.+}"</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:pattern value="(?i)^(#\{.+\}|true|false)$" />
+      <xs:pattern value="(#\{[^ \t]+\}|[Tt][Tr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])" />
     </xs:restriction>
   </xs:simpleType>
 

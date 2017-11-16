@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.configuration:1.1" xsi:schemaLocation="urn:nybatis.configuration:1.1 http://nybatis.github.io/schema/nybatis-config.xsd">
-<!--<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.configuration:1.1" xsi:schemaLocation="urn:nybatis.configuration:1.0 nybatis-config.xsd">-->
+<!--<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.configuration:1.2" xsi:schemaLocation="urn:nybatis.configuration:1.2 http://nybatis.github.io/schema/nybatis-config.xsd">-->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:nybatis.configuration:1.2" xsi:schemaLocation="urn:nybatis.configuration:1.2 nybatis-config.xsd">
 
   <properties path="config.properties">
     <property key="username" value="nayasis+#{driver}"/>
@@ -23,6 +23,7 @@
       <path>test01/sample.xml</path>
       <path>test02/sub01</path>
     </sqlPath>
+    <createTable>true</createTable>
   </environment>
 
   <environment id="sample02">
