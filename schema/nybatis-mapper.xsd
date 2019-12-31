@@ -135,7 +135,7 @@
         <xs:element ref="nm:group"    />
         <xs:element ref="nm:ref"      />
       </xs:choice>
-      <xs:attribute name="key"       type="nm:foreachKey" use="required" />
+      <xs:attribute name="key"       type="nm:notEmpty" use="required" />
       <xs:attribute name="open"      type="nm:notEmpty" />
       <xs:attribute name="close"     type="nm:notEmpty" />
       <xs:attribute name="concater"  type="nm:notEmpty" />
@@ -165,15 +165,6 @@
   <xs:simpleType name="notEmpty">
     <xs:restriction base="xs:string">
       <xs:minLength value="1"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="foreachKey">
-    <xs:annotation>
-      <xs:documentation>it must be "#{.+}"</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:pattern value="#\{.+\}" />
     </xs:restriction>
   </xs:simpleType>
 
